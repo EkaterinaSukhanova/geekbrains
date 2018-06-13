@@ -1,4 +1,6 @@
+"use strict";
 
-var new_word = process.argv[2].replace(/[Р, р, Н, н, К, к]/g,'');
+let input_text = process.argv[2];
+let replaced_text = input_text.replace(/[РрНнКк]/g,'');
 
-console.log(new_word);
+console.log(replaced_text);

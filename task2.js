@@ -1,31 +1,26 @@
 "use strict";
 
-function min_way(str_1, str_2) {
+function min_offset(str_1, str_2) {
 
     if (str_1.length !== str_2.length) {
         return -1;
     }
 
-    outer: for (let k = 0; k < str_1.length; ++k) {
+    for (let right_offset = 0; right_offset < str_1.length; ++right_offset) {
 
-        for (let i = k, j = 0; i < str_1.length + k, j < str_2.length; ++i, ++j) {
-            if (str_1[i % str_1.length] !== str_2[j]) {
-                continue outer;
-            }
+        let str_to_compare = str_1.slice(right_offset, str_1.length) + str_1.slice(0, right_offset);
+        if (str_2.localeCompare(str_to_compare) !== 0) {
+            continue;
         }
 
-        let b = str_1.length - k;
-        if (k < b) {
-            return k;
-        } else {
-            return b;
-        }
+        let left_offset = str_1.length - right_offset;
+
+        return right_offset < left_offset ? right_offset : left_offset;
     }
-
     return -1;
 }
 
 let str_1 = process.argv[2];
 let str_2 = process.argv[3];
 
-console.log(min_way(str_1, str_2));
+console.log(min_offset(str_1, str_2));

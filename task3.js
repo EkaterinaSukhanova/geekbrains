@@ -1,7 +1,7 @@
 "use strict";
 
-let num_1 = process.argv[2];
-let num_2 = process.argv[3];
+let num_1 = +process.argv[2];
+let num_2 = +process.argv[3];
 
 while (num_1 !== 0 && num_2 !== 0) {
     if (num_1 > num_2) {
